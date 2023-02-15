@@ -9,6 +9,7 @@ const Login = () => {
   const [userMailInput, setuserMailInput] = useState("");
   const navigate = useNavigate();
   const { setUserInfo } = useContext(UserContext);
+  const { setLoggedIn } = useContext(UserContext);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,6 +28,7 @@ const Login = () => {
   const userEmailInput = (event) => {
     setuserMailInput(event.target.value);
   };
+
   const emailChecker = (event) => {
     event.preventDefault();
     try {
@@ -37,6 +39,7 @@ const Login = () => {
       if (data !== undefined) {
         localStorage.setItem("user", JSON.stringify(data));
         setUserInfo(data);
+        setLoggedIn(true);
         navigate("/Albums");
       }
     } catch (error1) {
