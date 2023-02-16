@@ -8,7 +8,7 @@ const Login = () => {
   const [user, setUser] = useState("");
   const [userMailInput, setuserMailInput] = useState("");
   const navigate = useNavigate();
-  const { setUserInfo } = useContext(UserContext);
+  // const { setUserInfo } = useContext(UserContext);
   const { setLoggedIn } = useContext(UserContext);
 
   useEffect(() => {
@@ -38,8 +38,8 @@ const Login = () => {
       );
       if (data !== undefined) {
         localStorage.setItem("user", JSON.stringify(data));
-        setUserInfo(data);
-        setLoggedIn(true);
+        // setUserInfo(data);
+        setLoggedIn(data);
         navigate("/Albums");
       }
     } catch (error1) {
